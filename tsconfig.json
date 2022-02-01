@@ -1,12 +1,31 @@
 {
-  "extends": "../../tsconfig.base",
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist"
-  },
   "include": ["src/**/*"],
   "exclude": ["**/__tests__"],
-  "references": [
-    { "path": "../apollo-server-caching" },
-  ]
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "lib": ["es2019", "esnext.asynciterable"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "*" : ["types/*"]
+    }
+  }
 }

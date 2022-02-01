@@ -5,20 +5,30 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apollographql/apollo-server",
-    "directory": "packages/apollo-datasource"
+    "url": "https://github.com/apollographql/apollo-datasource"
   },
-  "homepage": "https://github.com/apollographql/apollo-server#readme",
+  "homepage": "https://github.com/apollographql/apollo-datasource#readme",
   "bugs": {
-    "url": "https://github.com/apollographql/apollo-server/issues"
+    "url": "https://github.com/apollographql/apollo-datasource/issues"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
-    "node": ">=12.0"
+    "node": ">=12.0",
+    "npm": "8.x"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "git clean -dfqX",
+    "postinstall": "npm run build",
+    "prettier-check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/node": "12.20.37",
+    "prettier": "2.5.1",
+    "typescript": "4.5.4"
   },
   "dependencies": {
-    "apollo-server-caching": "file:../apollo-server-caching",
-    "apollo-server-env": "file:../apollo-server-env"
+    "apollo-server-caching": "^3.3.0"
   }
 }
