@@ -1,5 +1,6 @@
 {
   "name": "apollo-datasource",
+  "description": "A TypeScript interface for fetching data within Apollo Server",
   "version": "3.3.0",
   "author": "Apollo <packages@apollographql.com>",
   "license": "MIT",
@@ -24,6 +25,7 @@
     "prettier-check": "prettier --check ."
   },
   "devDependencies": {
+    "@changesets/cli": "^2.20.0",
     "@types/node": "12.20.37",
     "prettier": "2.5.1",
     "typescript": "4.5.4"
