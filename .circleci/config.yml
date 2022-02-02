@@ -18,7 +18,6 @@ workflows:
   build:
     jobs:
       - Build
-  lint:
-    jobs:
       - node/run:
+          name: Lint
           npm-run: 'prettier-check'
