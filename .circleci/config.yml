@@ -6,7 +6,7 @@ orbs:
 # Important! When adding a new job to `jobs`, make sure to define when it
 # executes by also adding it to the `workflows` section below!
 jobs:
-  Lint:
+  Build:
     docker:
       - image: 'cimg/base:stable'
     steps:
@@ -14,9 +14,11 @@ jobs:
       - node/install:
           node-version: '16.5'
       - node/install-packages
-      - node/run:
-          npm-run: 'prettier-check'
 workflows:
+  build:
+    jobs:
+      - Build
   lint:
     jobs:
-      - Lint
+      - node/run:
+          npm-run: 'prettier-check'
