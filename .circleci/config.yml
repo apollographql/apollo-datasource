@@ -13,8 +13,9 @@ jobs:
       - checkout
       - node/install:
           node-version: '16.5'
-      - run:
-          command: npm run prettier-check
+      - node/install-packages
+      - node/run:
+          npm-run: prettier-check
 workflows:
   lint:
     jobs:
