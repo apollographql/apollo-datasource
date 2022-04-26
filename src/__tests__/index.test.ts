@@ -11,7 +11,6 @@ class SpyDataSource extends DataSource {
 }
 
 describe('dataSourcePlugin', () => {
-
   let server: ApolloServer;
   afterEach(async () => {
     await server.stop();
@@ -36,7 +35,7 @@ describe('dataSourcePlugin', () => {
       },
       plugins: [dataSourcePlugin(dataSourceMap)],
     });
-  
+
     await server.start();
     await server.executeOperation({ query: `{ hello }` });
 
