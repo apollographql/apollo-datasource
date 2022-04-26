@@ -2,4 +2,4 @@
 '@apollo/datasource': major
 ---
 
-Introduce `dataSourcePlugin` (v4 compatible only)
+Introduce `dataSourcePlugin` (Apollo Server v4 compatible only)
