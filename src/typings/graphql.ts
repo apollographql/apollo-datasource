@@ -2,6 +2,7 @@ import type { DataSource } from '..';
 
 declare module 'graphql' {
   interface GraphQLResolveInfo {
-    dataSources: Map<string, DataSource>;
+    // too bad we can't get TContext here
+    dataSources: Map<string, DataSource<any>>;
   }
 }
