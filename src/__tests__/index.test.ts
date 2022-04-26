@@ -1,9 +1,9 @@
-import { ApolloServer } from '@apollo/server';
+import { ApolloServer, BaseContext } from '@apollo/server';
 import gql from 'graphql-tag';
 import Keyv from 'keyv';
 import { DataSource, dataSourcePlugin } from '..';
 
-class SpyDataSource extends DataSource {
+class SpyDataSource extends DataSource<BaseContext> {
   constructor(spy?: jest.Mock) {
     super();
     this.initialize = spy;
