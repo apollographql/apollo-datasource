@@ -23,16 +23,30 @@
     "postinstall": "npm run build",
     "prettier-check": "prettier --check .",
     "prettier-fix": "prettier --write .",
-    "publish-changeset": "changeset publish"
+    "publish-changeset": "changeset publish",
+    "test": "jest",
+    "test:ci": "jest --coverage --ci --maxWorkers=2 --reporters=default --reporters=jest-junit",
+    "watch": "tsc --build --watch"
   },
   "devDependencies": {
+    "@apollo/server": "https://pkg.csb.dev/apollographql/apollo-server/commit/a991f81a/@apollo/server",
     "@changesets/changelog-github": "0.4.4",
     "@changesets/cli": "2.22.0",
+    "@types/jest": "27.4.1",
     "@types/node": "12.20.49",
+    "graphql-tag": "^2.12.6",
+    "jest": "27.5.1",
+    "jest-junit": "13.0.0",
+    "keyv": "^4.2.2",
     "prettier": "2.6.2",
+    "ts-jest": "27.1.4",
+    "ts-node": "^10.7.0",
     "typescript": "4.6.3"
   },
   "dependencies": {
     "apollo-server-caching": "^3.3.0"
+  },
+  "peerDependencies": {
+    "graphql": "^16.3.0"
   }
 }
