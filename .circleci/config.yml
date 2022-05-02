@@ -3,21 +3,64 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
-# Important! When adding a new job to `jobs`, make sure to define when it
-# executes by also adding it to the `workflows` section below!
-jobs:
-  Build:
-    docker:
-      - image: 'cimg/base:stable'
+commands:
+  install-volta:
+    description: Install volta to manage Node/npm versions
     steps:
+      - run:
+          name: Install volta
+          # Teach the volta installer to update Circle's special env
+          # file instead of the default.
+          command: |
+            curl https://get.volta.sh | PROFILE="$BASH_ENV" bash
+
+  setup-node:
+    parameters:
+      node-version:
+        type: string
+        default: ''
+    steps:
+      - install-volta
       - checkout
-      - node/install:
-          node-version: '16.5'
+      - when:
+          condition: << parameters.node-version >>
+          steps:
+          - run: volta pin node@<< parameters.node-version >>
+      - run: node --version
+      - run: npm --version
       - node/install-packages
+
+jobs:
+  NodeJS:
+    parameters:
+      node-version:
+        type: string
+    docker:
+    - image: cimg/base:stable
+    steps:
+      - setup-node:
+          node-version: <<parameters.node-version>>
+      - run: npm run test:ci
+      - store_test_results:
+          path: junit.xml
+
+  Prettier:
+    docker:
+    - image: cimg/base:stable
+    steps:
+      - setup-node
+      - run: npm run prettier-check
+
 workflows:
-  build:
+  version: 2
+  Build:
     jobs:
-      - Build
-      - node/run:
-          name: Lint
-          npm-run: 'prettier-check'
+      - NodeJS:
+          name: NodeJS << matrix.node-version >>
+          matrix:
+            parameters:
+              node-version:
+                - "14"
+                - "16"
+                - "18"
+      - Prettier
