@@ -1,7 +1,7 @@
 {
   "name": "@apollo/datasource",
   "description": "A TypeScript interface for fetching data within Apollo Server",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "author": "Apollo <packages@apollographql.com>",
   "license": "MIT",
   "repository": {
